@@ -1,5 +1,11 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { GoogleGenAI } from "@google/genai";
+import dotenv from "dotenv";
+import path from "path";
+
+// Load environment variables for local development (vercel dev)
+dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
+dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 
 // System Instructions constant for AI behavior and formatting rules
 const SYSTEM_INSTRUCTION = `
