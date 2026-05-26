@@ -120,7 +120,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             { role: "user", content: userPrompt },
           ],
           temperature: 0.3,
-          max_tokens: 4096,
+          max_tokens: 2048,
         }),
       });
 
