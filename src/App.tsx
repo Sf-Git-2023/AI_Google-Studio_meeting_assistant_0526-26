@@ -24,6 +24,7 @@ import { SummarizeResponse } from "./types";
 
 export default function App() {
   // State for inputs
+  const [provider, setProvider] = useState<"gemini" | "nvidia">("gemini");
   const [transcript, setTranscript] = useState<string>("");
   const [focusNotes, setFocusNotes] = useState<string>("");
   const [translationType, setTranslationType] = useState<string>("bilingual");
@@ -35,7 +36,7 @@ export default function App() {
   
   // State for result
   const [aiResult, setAiResult] = useState<string>("");
-  const [modelUsed, setModelUsed] = useState<string>("gemini-3.5-flash");
+  const [modelUsed, setModelUsed] = useState<string>("gemini-2.5-flash-lite");
   const [copied, setCopied] = useState<boolean>(false);
 
   // Timer reference for rolling funny messages
@@ -99,12 +100,13 @@ export default function App() {
     setAiResult("");
 
     try {
-      const response = await fetch("/api/summarize", {
+      const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          provider,
           transcript,
           focusNotes,
           translationType: 
@@ -303,6 +305,35 @@ export default function App() {
                   placeholder="例如：請強調專案卡關時程、忽略開場閒暄聊"
                   className="w-full text-xs bg-slate-50 border border-slate-200 hover:border-slate-300 rounded-lg px-3 py-2.5 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                 />
+              </div>
+
+              {/* AI 服務商選擇 */}
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs font-bold text-slate-600 flex items-center gap-1">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                  AI 服務提供商 (AI Provider)
+                </span>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { id: "gemini", label: "Google Gemini", desc: "gemini-2.5-flash-lite" },
+                    { id: "nvidia", label: "NVIDIA", desc: "nemotron-mini-4b" }
+                  ].map((option) => (
+                    <button
+                      key={option.id}
+                      onClick={() => setProvider(option.id as "gemini" | "nvidia")}
+                      className={`py-2 px-1 rounded-lg border text-center transition cursor-pointer flex flex-col justify-center items-center ${
+                        provider === option.id
+                          ? option.id === "gemini"
+                            ? "bg-blue-50/70 border-blue-500 text-blue-700 font-bold shadow-xs"
+                            : "bg-emerald-50/70 border-emerald-500 text-emerald-700 font-bold shadow-xs"
+                          : "bg-white border-slate-200 hover:bg-slate-50 text-slate-600"
+                      }`}
+                    >
+                      <span className="text-[11px]">{option.label}</span>
+                      <span className="text-[9px] opacity-65 scale-90 leading-none">{option.desc}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* 翻譯傾向選擇 */}
