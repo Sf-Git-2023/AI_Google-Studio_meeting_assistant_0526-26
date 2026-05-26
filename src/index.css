@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans TC", "Inter", "PingFang TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Geometric balance layout design helpers */
+.geometric-grid {
+  background-color: #F8FAFC;
+  background-image: radial-gradient(#CBD5E1 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(8px);
+}
+
+.system-prompt-box {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Base custom animation for pulse loader */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Custom Markdown Content Typography styling to match a high-end corporate style */
+.markdown-content {
+  font-family: var(--font-sans);
+  line-height: 1.8;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 1.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.markdown-content h1 {
+  font-size: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.markdown-content h2 {
+  font-size: 1.3rem;
+  border-bottom: 2px solid #3b82f6; /* Modern geometric border indicator */
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.markdown-content h3 {
+  font-size: 1.125rem;
+  color: #2563eb;
+  border-left: 4px solid #3b82f6;
+  padding-left: 0.75rem;
+}
+
+.markdown-content p {
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+.markdown-content ul {
+  list-style-type: square;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.45rem;
+  color: #475569;
+}
+
+.markdown-content strong {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Custom Table style for Markdown Output */
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 0.9rem;
+  text-align: left;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.markdown-content thead {
+  background-color: #f1f5f9;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.markdown-content th {
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.markdown-content td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+.markdown-content tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #2563eb;
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: #475569;
+  margin: 1.25rem 0;
+  background-color: #f0f7ff;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.markdown-content code {
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  background-color: #f1f5f9;
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+}
+
+.markdown-content pre {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+  border: 1px solid #1e293b;
+}
+
+.markdown-content pre code {
+  color: inherit;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
