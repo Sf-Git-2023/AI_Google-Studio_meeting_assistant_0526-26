@@ -152,14 +152,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         });
       }
 
-      const ai = new GoogleGenAI({
-        apiKey: apiKey,
-        httpOptions: {
-          headers: {
-            "User-Agent": "aistudio-build",
-          },
-        },
-      });
+      const ai = new GoogleGenAI({ apiKey });
 
       const modelName = "gemini-2.5-flash-lite";
 
