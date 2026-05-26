@@ -114,7 +114,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "nvidia/nemotron-mini-4b-instruct",
+          model: "minimaxai/minimax-m2.7",
           messages: [
             { role: "system", content: SYSTEM_INSTRUCTION },
             { role: "user", content: userPrompt },
@@ -139,7 +139,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({
         success: true,
         result: resultText,
-        modelUsed: "nvidia/nemotron-mini-4b-instruct",
+        modelUsed: "minimaxai/minimax-m2.7",
       });
 
     } else {
